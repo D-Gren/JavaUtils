@@ -16,15 +16,15 @@ public class FileUtilTest {
     public void crudFileTest() throws IOException {
         //given
         File parentDirectory = new File(System.getProperty("user.dir"));
-        Assertions.assertTrue(parentDirectory.exists());
-
         File crudTestDirectory = FileUtil.buildFile(parentDirectory, "crud");
-        Assertions.assertFalse(FileUtil.exists(crudTestDirectory));
-
         File crudChildDirectory = FileUtil.buildFile(crudTestDirectory, "my", "child", "directory");
-        Assertions.assertFalse(FileUtil.exists(crudChildDirectory));
-
         File crudChildFile = FileUtil.buildFile(crudChildDirectory, "myFile.txt");
+        File crudRenamedChildFile = FileUtil.buildFile(crudChildDirectory, "myRenamedFile.txt");
+
+        //file existence initial verification
+        Assertions.assertTrue(FileUtil.exists(parentDirectory));
+        Assertions.assertFalse(FileUtil.exists(crudTestDirectory));
+        Assertions.assertFalse(FileUtil.exists(crudChildDirectory));
         Assertions.assertFalse(FileUtil.exists(crudChildFile));
 
         //file creation
@@ -34,6 +34,13 @@ public class FileUtilTest {
         FileUtil.createFile(crudChildFile);
         Assertions.assertTrue(FileUtil.exists(crudChildDirectory));
         Assertions.assertTrue(FileUtil.exists(crudChildFile));
+        Assertions.assertFalse(FileUtil.exists(crudRenamedChildFile));
+
+        //file renaming
+        boolean renamingSucceeded = FileUtil.renameFile(crudChildFile, "myRenamedFile.txt");
+        Assertions.assertTrue(renamingSucceeded);
+        Assertions.assertFalse(FileUtil.exists(crudChildFile));
+        Assertions.assertTrue(FileUtil.exists(crudRenamedChildFile));
 
         //file deletion
         Assertions.assertThrows(IOException.class, () -> FileUtil.deleteFile(crudTestDirectory));
@@ -42,6 +49,7 @@ public class FileUtilTest {
         Assertions.assertFalse(FileUtil.exists(crudTestDirectory));
         Assertions.assertFalse(FileUtil.exists(crudChildDirectory));
         Assertions.assertFalse(FileUtil.exists(crudChildFile));
+        Assertions.assertFalse(FileUtil.exists(crudRenamedChildFile));
     }
 
     @ParameterizedTest
@@ -79,6 +87,12 @@ public class FileUtilTest {
                 Arguments.of(new File("root" + File.separator + "temp"), FileUtil.buildFile("root", "temp", "childDir")),
                 Arguments.of(new File("root"), FileUtil.buildFile("root", "temp"))
         );
+    }
+
+    @Test
+    public void fileSizeTest() {
+        File file = new File("C:\\Users\\dariu\\Desktop\\exejar");
+        System.out.println(FileUtil.getFileSize(file, FileSizeUnit.KILOBYTE));
     }
 
 }
