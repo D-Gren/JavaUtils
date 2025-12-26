@@ -89,10 +89,4 @@ public class FileUtilTest {
         );
     }
 
-    @Test
-    public void fileSizeTest() {
-        File file = new File("C:\\Users\\dariu\\Desktop\\exejar");
-        System.out.println(FileUtil.getFileSize(file, FileSizeUnit.KILOBYTE));
-    }
-
 }

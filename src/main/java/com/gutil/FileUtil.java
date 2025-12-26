@@ -183,7 +183,7 @@ public class FileUtil {
     }
 
     /**
-     * Returns size of the file using given unit from {@link com.gutil.FileSizeUnit} enum. Size will be round up to
+     * Returns size of the file using given unit from {@link com.gutil.FileSizeUnit} enum. Size will be rounded up to
      * the closest integer. If {@code File} represents a directory, summarize size of subdirectories and files inside
      * will be returned.
      * @param file {@code File} instance representing a file or a directory in the file system
