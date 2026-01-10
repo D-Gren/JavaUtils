@@ -48,8 +48,10 @@ public class StringUtil {
      * padded with 'x' to meet requested length of 6, 'xxTEXT' will be returned).
      * @param originalText original {@code String} object to be expanded by specified character
      * @param pad specified character to be added on the left side of the string
-     * @param expectedLength max length of the {@code String} after the operation
-     * @return expanded {@code String} will length not smaller than expected length
+     * @param expectedLength max length of the {@code String} after the operation (if expected length is smaller than
+     *                       an actual length of the original {@code String} object - original {@code String} object
+     *                       will be returned)
+     * @return expanded {@code String} with length not smaller than expected length
      */
     public static String padLeading(String originalText, char pad, int expectedLength) {
         originalText = originalText == null ? "" : originalText;
@@ -65,8 +67,10 @@ public class StringUtil {
      * padded with 'x' to meet requested length of 6, 'TEXTxx' will be returned).
      * @param originalText original {@code String} object to be expanded by specified character
      * @param pad specified character to be added on the right side of the string
-     * @param expectedLength max length of the {@code String} after the operation
-     * @return expanded {@code String} will length not smaller than expected length
+     * @param expectedLength max length of the {@code String} after the operation (if expected length is smaller than
+     *                       an actual length of the original {@code String} object - original {@code String} object
+     *                       will be returned)
+     * @return expanded {@code String} with length not smaller than expected length
      */
     public static String padTrailing(String originalText, char pad, int expectedLength) {
         originalText = originalText == null ? "" : originalText;
@@ -78,7 +82,7 @@ public class StringUtil {
     }
 
     /**
-     * Checks if given String starts with any of the given possible prefixes.
+     * Checks if given {@code String} starts with any of the given possible prefixes.
      * @param text {@code String} to be checked
      * @param starters possible prefixes for the {@code String} object
      * @return {@code true} if {@code String} starts with any of the possible prefixes. If given {@code String} was null,
@@ -93,7 +97,7 @@ public class StringUtil {
     }
 
     /**
-     * Checks if given String starts with any of the given possible prefixes (ignoring the case).
+     * Checks if given {@code String} starts with any of the given possible prefixes (ignoring the case).
      * @param text {@code String} to be checked
      * @param starters possible prefixes for the {@code String} object
      * @return {@code true} if {@code String} starts with any of the possible prefixes. If given {@code String} was null,
@@ -109,7 +113,7 @@ public class StringUtil {
     }
 
     /**
-     * Checks if given String ends with any of the given possible suffixes.
+     * Checks if given {@code String} ends with any of the given possible suffixes.
      * @param text {@code String} to be checked
      * @param enders possible suffixes for the {@code String} object
      * @return {@code true} if {@code String} ends with any of the possible suffixes. If given {@code String} was null,
@@ -124,7 +128,7 @@ public class StringUtil {
     }
 
     /**
-     * Checks if given String ends with any of the given possible suffixes (ignoring the case).
+     * Checks if given {@code String} ends with any of the given possible suffixes (ignoring the case).
      * @param text {@code String} to be checked
      * @param enders possible suffixes for the {@code String} object
      * @return {@code true} if {@code String} ends with any of the possible suffixes. If given {@code String} was null,
