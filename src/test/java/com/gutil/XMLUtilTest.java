@@ -30,7 +30,7 @@ public class XMLUtilTest {
         Document document = XMLUtil.createNewDocument();
         Assertions.assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>", XMLUtil.toString(document));
 
-        Document documentWithRoot = XMLUtil.createNewDocument("my_root");
+        Document documentWithRoot = XMLUtil.createNewDocumentWithRoot("my_root");
         Assertions.assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + System.lineSeparator() + "<my_root/>", XMLUtil.toString(documentWithRoot));
     }
 
